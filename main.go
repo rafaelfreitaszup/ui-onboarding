@@ -77,7 +77,7 @@ func showToolSelection(mainScreen *window.Window) {
 		print("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
-	uiLoadingError := toolSelection.LoadFile("./ui/tools/index.html")
+	uiLoadingError := toolSelection.LoadFile("./ui/tool-selection/index.html")
 
 	if uiLoadingError != nil {
 		print("Failed to load ui file ", uiLoadingError.Error())
