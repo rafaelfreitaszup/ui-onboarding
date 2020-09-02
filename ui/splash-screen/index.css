@@ -10,10 +10,9 @@ html {
     color: #575a60;
 }
 
-
 .container {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     margin-left: auto;
     margin-right: auto;
     background-image: url(img/animation.gif);

@@ -16,7 +16,7 @@ func main() {
 		print("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
-	uiLoadingError := presentation.LoadFile("./presentation.html")
+	uiLoadingError := presentation.LoadFile("./ui/presentation/index.html")
 
 	if uiLoadingError != nil {
 		print("Failed to load ui file ", uiLoadingError.Error())
@@ -49,7 +49,7 @@ func showSplashScreen(mainScreen *window.Window) {
 		print("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
-	uiLoadingError := splashScreen.LoadFile("./splash.html")
+	uiLoadingError := splashScreen.LoadFile("./ui/splash-screen/index.html")
 
 	if uiLoadingError != nil {
 		print("Failed to load ui file ", uiLoadingError.Error())
@@ -77,7 +77,7 @@ func showToolSelection(mainScreen *window.Window) {
 		print("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
-	uiLoadingError := toolSelection.LoadFile("./tools.html")
+	uiLoadingError := toolSelection.LoadFile("./ui/tools/index.html")
 
 	if uiLoadingError != nil {
 		print("Failed to load ui file ", uiLoadingError.Error())
