@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Ritchie Onboarding</title>
+    <link rel="stylesheet" href="./presentation.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="banner-displayed">
+            <img src="./img/banner-zup.png" alt="Banner ZUP" />
+        </div>
+    </header>
+    <main>
+        <div class="resume">
+            <p>Bem vindo,</p><br><br>
+            <p> Essa é a fórmula de Onboarding que prepara seu ambiente de desenvolvimento instalando suas IDEs, Tools,
+                Browser, tudo com um único comando!</p><br>
+            <p>Sim, é simples, rápido e você economiza 2 horas ao fazer o setup de
+                uma nova máquina (esse comando está disponível apenas para linux e mac, por enquanto).</p><br><br>
+            <p>Selecione sua função:</p>
+        </div>
+        <div class="selection">
+            <select name="select">
+                <option selected="selected" class="select-custom-default" value="backend">backend</option>
+                <option class="select-custom-default" value="dev-ios">dev-ios</option>
+                <option class="select-custom-default" value="dev-java">dev-java</option>
+                <option class="select-custom-default" value="dev-qa">dev-qa</option>
+                <option class="select-custom-default" value="sre">sre</option>
+            </select>
+        </div>
+    </main>
+    <footer>
+        <div class="buttons">
+            <button href="#" class="button cancel">Cancelar</button>
+            <button #continue href="#" class="button continue">Continuar</button>
+        </div>
+    </footer>
+    <script type="text/tiscript">
+        function close(){    
+            view.close()
+            view.load_tool_selection()
+        }
+    </script>
+</body>
+
+</html>

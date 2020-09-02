@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #0C3455;
+    color: #575a60;
+}

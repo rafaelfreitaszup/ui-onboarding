@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #0C3455;
+    color: #575a60;
+}
+
+
+.container {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(img/animation.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

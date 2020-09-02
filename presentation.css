@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #0C3455;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #F1F2F2;
+}
+
+.banner-displayed {
+    width: 443px;
+    height: 100%;
+    padding-top: 52px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resume {
+    padding-top: 44px;
+    width: 538px;
+    margin-left: 48px;
+}
+
+.selection {
+    width: 118px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 234px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.selection select {
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    color: #F1F2F2;
+    background: #0C3455 url('img/arrow.png') 93% 60% no-repeat;
+}
+
+.selection select option {
+    color: #F1F2F2;
+    background: #0C3455;
+}
+
+.selection select option:hover {
+    background: #8DC63F;
+}
+
+.select-custom-default {
+    color: #F1F2F2;
+    background: #0C3455;
+}
+
+.buttons {
+    padding-top: 48px;
+    margin-left: 457px;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.button {
+    width: 68px;
+    height: 20px;
+    border: 0;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    color: #F1F2F2;
+}
+
+.cancel {
+    background: #F7941E;
+    box-shadow: 2px 2px 0 2px #c56c00;
+}
+
+.continue {
+    margin-left: 19px;
+    background: #8DC63F;
+    box-shadow: 2px 2px 0 2px #598a14;
+}
+
+.cancel:active {
+    box-shadow: 0 0 0 0 #975300, inset 3px 3px 3px #975300;
+    transform: translate(4px, 4px);
+}
+
+.continue:active {
+    box-shadow: 0 0 0 0 #467406, inset 3px 3px 3px #467406;
+    transform: translate(4px, 4px);
+}
