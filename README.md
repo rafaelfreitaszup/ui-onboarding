@@ -1,6 +1,6 @@
 # POC UI Onboarding
 
-+ Crie aplicativos de plataforma cruzada para desktop com HTML, CSS e script!
++ Crie aplicativos de Cross-Platform para desktop com HTML, CSS e script!
 
 + Criar telas de desktop é fácil utilizando o [sciter](https://sciter.com/).
 
