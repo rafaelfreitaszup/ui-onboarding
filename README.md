@@ -8,6 +8,18 @@
 
 + Talvez esses [vídeos](https://www.youtube.com/playlist?list=PLub5C2vM5SjKvkbFfposhyg1V2gpXnviM) ajudem você a entender um pouco sobre a biblioteca.
 
++ Alguns [Tutoriais](https://sciter.com/tutorials/).
+
++ Entenda sobre a [Arquitetura do Sciter](https://sciter.com/developers/engine-architecture/)
+
++ [Documentação](https://sciter.com/developers/sciter-docs/)
+
++ Sobre [Licenciamento e preços](https://sciter.com/prices/).
+
++ Assistente Sciter para [Visual Studio Code](https://sciter.com/sciter-assistant-for-visual-studio-code/).
+
++ [Ferramentas de desenvolvimento](https://sciter.com/developers/development-tools/)
+
 ## Minhas impressões: 
 
 + Facilidade de uso.
