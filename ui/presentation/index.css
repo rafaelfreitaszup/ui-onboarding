@@ -36,12 +36,14 @@ html {
     margin-left: 234px;
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
+select>button {
+    foreground-image: url(stock:chevron-down);
+    fill: #F1F2F2;
+    margin-bottom: 7px;
+}
+
+select:hover>button {
+    fill: #8DC63F;
 }
 
 .selection select {
@@ -51,7 +53,7 @@ select {
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     color: #F1F2F2;
-    background: #0C3455 url('img/arrow.png') 93% 60% no-repeat;
+    background: #0C3455;
 }
 
 .selection select option {
