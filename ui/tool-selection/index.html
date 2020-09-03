@@ -12,37 +12,55 @@
         </div>
     </header>
     <main>
-        <div class="tools">
-            <h1 class="title">Ferramentas</h1>
-            <form class="search" action="">
-                <input type="text" novalue="Search..." name="search">
-                <button type="submit" class="button-search icons8-search"></button>
-            </form>
-            <select|tree multiple=checkmarks>
-                <option>
-                    <caption>Browser</caption>
-                <option value="1">Chome</option>
-                <option value="2">Firefox</option>
-                </option>
-                <option>
-                    <caption>Ides</caption>
-                <option value="5">Android-Studio</option>
-                <option value="6">Intellij</option>
-                <option value="7">VSCode</option>
-                <option value="8">Golang</option>
-                <option value="8">WebStorm</option>
-                <option value="8">Atom</option>
-                </option>
-                <option expanded>
-                    <caption>CLI</caption>
-                </option>
-                <option expanded>
-                    <caption>Tools</caption>
-                </option>
-                <option expanded>
-                    <caption>Dependecy-manager</caption>
-                </option>
-            </select>
+        <div>
+            <div class="tools">
+                <h1 class="title">Ferramentas</h1>
+                <div>
+                    <form class="search" action="">
+                        <input type="text" novalue="Search..." name="search">
+                        <button type="submit" class="button-search icons8-search"></button>
+                    </form>
+                </div>
+                <div class="function">
+                    <select name="select">
+                        <option selected="selected" class="select-custom-default" value="backend">backend</option>
+                        <option class="select-custom-default" value="dev-ios">dev-ios</option>
+                        <option class="select-custom-default" value="dev-java">dev-java</option>
+                        <option class="select-custom-default" value="dev-qa">dev-qa</option>
+                        <option class="select-custom-default" value="sre">sre</option>
+                    </select>
+                </div>
+                <div class="selection-tools">
+                    <select|tree multiple=checkmarks>
+                        <option>
+                            <caption>Browser</caption>
+                        <option value="1">Chome</option>
+                        <option value="2">Firefox</option>
+                        </option>
+                        <option>
+                            <caption>Ides</caption>
+                        <option value="5">Android-Studio</option>
+                        <option value="6">Intellij</option>
+                        <option value="7">VSCode</option>
+                        <option value="8">Golang</option>
+                        <option value="8">WebStorm</option>
+                        <option value="8">Atom</option>
+                        </option>
+                        <option expanded>
+                            <caption>CLI</caption>
+                        </option>
+                        <option expanded>
+                            <caption>Tools</caption>
+                        </option>
+                        <option expanded>
+                            <caption>Dependecy-manager</caption>
+                        </option>
+                        </select>
+                </div>
+            </div>
+            <div class="selected-tools">
+                <h1 class="title">Ferramentas Selecionadas</h1>
+            </div>
         </div>
     </main>
     <footer>

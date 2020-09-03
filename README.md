@@ -31,4 +31,4 @@
 
 ## Veja o funcionamento atual da POC:
 
-![UI Onboarding](./img/record-v2.gif)
+![UI Onboarding](./img/record-v3.gif)

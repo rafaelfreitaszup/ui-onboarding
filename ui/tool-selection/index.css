@@ -25,10 +25,12 @@ html {
 }
 
 .tools {
+    width: 278px;
+    height: 421px;
+    border-radius: 5px;
     margin-top: 22px;
-    width: 270px;
-    height: 400px;
-    margin-left: 25px;
+    margin-left: 24px;
+    float: left;
     border: 1px solid #E6E7E8;
 }
 
@@ -37,7 +39,6 @@ html {
     line-height: 16px;
     color: #F1F2F2;
     margin-top: 8px;
-    margin-bottom: 14px;
     text-align: center;
 }
 
@@ -62,6 +63,7 @@ form.search input[type=text] {
     height: 18px;
     font-size: 10px;
     line-height: 12px;
+    margin-top: 14px;
     padding: 2px 0px 0px 15px;
     margin-left: 12.5px;
     background: #0C3455;
@@ -75,26 +77,71 @@ form.search::after {
     display: table;
 }
 
-.tools select {
+.function {
+    width: 118px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 12.5px;
+}
+
+.function select>button {
+    foreground-image: url(stock:chevron-down);
+    fill: #F1F2F2;
+    margin-bottom: 7px;
+}
+
+.function select:hover>button {
+    fill: #8DC63F;
+}
+
+.function select {
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    color: #F1F2F2;
+    background: #0C3455;
+}
+
+.function select option {
+    color: #F1F2F2;
+    background: #0C3455;
+}
+
+.function select option:hover {
+    background: #8DC63F;
+}
+
+.select-custom-default {
+    color: #F1F2F2;
+    background: #0C3455;
+}
+
+.selection-tools {
     width: 267px;
-    margin-top: 22px;
-    height: 310px;
-    border-radius: 5px;
+    height: 300px;
+    margin-top: 18px;
+}
+
+.tools .selection-tools select {
+    width: 267px;
+    height: 300px;
     background: none;
 }
 
-.tools select caption {
+.tools .selection-tools select caption {
     padding-left: 18px;
     fill: #F1F2F2;
     color: #F1F2F2;
     background: none;
 }
 
-.tools select option:hover {
+.tools .selection-tools select option:hover {
     stroke: #0af;
 }
 
-.tools select option {
+.tools .selection-tools select option {
     margin-left: 20px;
     padding-left: 20px;
     foreground-size: 10px 10px;
@@ -103,27 +150,37 @@ form.search::after {
     background: none;
 }
 
-.tools select caption:checked {
+.tools .selection-tools select caption:checked {
     background-image: url(stock:checkmark-hollow);
     fill: #8DC63F;
     color: #8DC63F;
     background: none;
 }
 
-.tools select option:checked {
+.tools .selection-tools select option:checked {
     background-image: url(stock:checkmark-hollow);
     fill: #8DC63F;
     color: #8DC63F;
     background: none;
+}
+
+.selected-tools {
+    width: 278px;
+    height: 421px;
+    border-radius: 5px;
+    float: right;
+    margin-top: 22px;
+    margin-right: 24px;
+    border: 1px solid #FFF2F2;
 }
 
 .buttons {
-    padding-top: 48px;
-    padding-bottom: 16px;
-    margin-left: 457px;
+    margin-top: 25x;
+    margin-right: 24px;
+    float: right;
 }
 
-button {
+.buttons button {
     font: inherit;
     cursor: pointer;
 }

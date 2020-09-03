@@ -7,14 +7,12 @@
 
 html {
     background-color: #0C3455;
-    color: #575a60;
 }
 
 .container {
-    width: 600px;
-    height: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 640px;
+    height: 640px;
+    margin: auto;
     background-image: url(img/animation.gif);
     background-repeat: no-repeat;
     background-attachment: fixed;
