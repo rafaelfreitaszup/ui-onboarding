@@ -41,7 +41,7 @@ func main() {
 }
 
 func showSplashScreen(mainScreen *window.Window) {
-	rect := sciter.NewRect(250, 500, 635, 625)
+	rect := sciter.NewRect(250, 500, 635, 662)
 
 	splashScreen, windowsGenerateionError := window.New(sciter.SW_TOOL, rect)
 
