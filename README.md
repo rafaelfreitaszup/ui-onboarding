@@ -34,7 +34,7 @@
 + Configurar o Sciter de acordo com o SO
 
   - No momento, apenas Go 1.10 ou superior é compatível.
-  - Baixe o sciter-sdk.
+  - Baixe o [sciter-sdk](https://sciter.com/download/).
   - Extraia a biblioteca de tempo de execução do sciter de sciter-sdk para o PATH do sistema.
   - As bibliotecas de tempo de execução vivem bin bin.lnx bin.osx com sufixo como dll sooudylib.
 
@@ -58,7 +58,7 @@
     ```
 
   - Configure o ambiente GCC para CGO.
-  - mingw64-gcc (5.2.0 e 7.2.0 são testados) é recomendado para usuários do Windows.
+  - [mingw64-gcc](https://sourceforge.net/projects/mingw-w64/) (5.2.0 e 7.2.0 são testados) é recomendado para usuários do Windows.
   - No Linux, gcc (4.8 ou superior) e gtk + -3.0 são necessários.
   - go get -x github.com/sciter-sdk/go-sciter
 
