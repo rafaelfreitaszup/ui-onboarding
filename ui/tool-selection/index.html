@@ -18,7 +18,7 @@
                 <div class="search">
                     <form #search>
                         <input|text #text novalue="Search..." name="search">
-                        <button|submit class="button-search icons8-search"></button>
+                            <button|submit class="button-search icons8-search"></button>
                     </form>
                 </div>
                 <div class="function">
@@ -32,30 +32,8 @@
                 </div>
                 <div class="selection-tools">
                     <select|tree #tools multiple=checkmarks>
-                        <option>
-                            <caption>Browser</caption>
-                        <option #Chome value="Chome">Chome</option>
-                        <option #Firefox value="Firefox">Firefox</option>
-                        </option>
-                        <option>
-                            <caption>Ides</caption>
-                        <option #Android-Studio value="Android-Studio">Android-Studio</option>
-                        <option #Intellij value="Intellij">Intellij</option>
-                        <option #VSCode value="VSCode">VSCode</option>
-                        <option #Golang value="Golang">Golang</option>
-                        <option #WebStorm value="WebStorm">WebStorm</option>
-                        <option #Atom value="Atom">Atom</option>
-                        </option>
-                        <option expanded>
-                            <caption>CLI</caption>
-                        </option>
-                        <option expanded>
-                            <caption>Tools</caption>
-                        </option>
-                        <option expanded>
-                            <caption>Dependecy-manager</caption>
-                        </option>
-                        </select>
+
+                    </select>
                 </div>
             </div>
             <div class="container-selected-tools">
@@ -76,6 +54,16 @@
     <script type="text/tiscript">
         event click $(#cancel) {
             view.close()
+        }
+
+        $(#activity).onValueChanged = function() {
+            const value = $(#activity).value;
+            
+            for (var i = 0; i < $(#tools).length; ) {
+                $(#tools)[0].remove();
+            }
+
+            view.changeConfig(value);
         }
 
         $(#tools).onControlEvent = function(evt) {
@@ -210,6 +198,25 @@
                         break;
                     }
                 }
+            }
+        }
+
+        function addElementsConfig(map) {            
+            var jsonObject= parseData(map); 
+
+            for (var (key, value) in jsonObject) {
+                const option = <option></option>;
+                $(#tools).append(option);
+
+                const caption = <caption>{key}</caption>;
+
+                $(#tools).last.append(caption);
+
+                for (var (k, v) in value) {  
+                    const option = <option id={v.toString()} value={v.toString()}>{v}</option>;  
+                             
+                    $(#tools).last.append(option);                   
+                }                    
             }
         }
     </script>

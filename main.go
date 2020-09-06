@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -33,9 +34,7 @@ func main() {
 
 	presentation.DefineFunction("load_tool_selection", func(args ...*sciter.Value) *sciter.Value {
 		if args[0].IsString() == true {
-			key := args[0]
-
-			showToolSelection(presentation, key)
+			showToolSelection(args[0])
 		}
 
 		return nil
@@ -72,7 +71,7 @@ func showSplashScreen(mainScreen *window.Window) {
 	}()
 }
 
-func showToolSelection(mainScreen *window.Window, key *sciter.Value) {
+func showToolSelection(key *sciter.Value) {
 	rect := sciter.NewRect(250, 500, 635, 625)
 
 	toolSelection, windowsGenerateionError := window.New(sciter.SW_TITLEBAR|sciter.SW_TOOL|sciter.SW_CONTROLS, rect)
@@ -87,12 +86,26 @@ func showToolSelection(mainScreen *window.Window, key *sciter.Value) {
 		log.Println("Failed to load ui file ", uiLoadingError.Error())
 	}
 
-	// todo adicionar select tools dinâmico
-	// parsedFile := getConfigs(key)
-
 	toolSelection.Call("selectElement", sciter.NewValue(key))
+	toolSelection.Call("addElementsConfig", sciter.NewValue(string(parseJSON(key))))
+
+	toolSelection.DefineFunction("changeConfig", func(args ...*sciter.Value) *sciter.Value {
+		if args[0].IsString() == true {
+			toolSelection.Call("addElementsConfig", sciter.NewValue(string(parseJSON(args[0]))))
+		}
+
+		return nil
+	})
 
 	toolSelection.Show()
+}
+
+func parseJSON(key *sciter.Value) []byte {
+	parsedFile := getConfigs(key)
+
+	json, _ := json.Marshal(parsedFile)
+
+	return json
 }
 
 func getConfigs(key *sciter.Value) Setup {
