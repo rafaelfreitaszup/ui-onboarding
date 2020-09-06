@@ -1,0 +1,30 @@
+browser:
+  - Chrome
+  - Firefox
+
+ides:
+  - Android-Studio
+  - IntelliJ
+  - VSCode
+  - Atom
+
+cli:
+  - git
+  - github-cli
+  - docker
+
+tools:
+  - postman
+  - cucumber
+  - appium
+  - selenium
+
+dependecy-manager:
+  - gradle
+  - mvn
+  - pip
+
+runtime:
+  - java-8
+  - java-11
+  - nodejs

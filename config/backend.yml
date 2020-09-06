@@ -1,0 +1,37 @@
+browser:
+  - Chrome
+  - Firefox
+
+ides:
+  - Android-Studio
+  - IntelliJ
+  - VSCode
+  - GoLand
+  - WebStorm
+  - Atom
+
+cli:
+  - git
+  - github-cli
+  - docker
+  - aws
+  - gcp
+  - kubectl
+  - terraform
+  - azure
+
+tools:
+  - postman
+
+dependecy-manager:
+  - brew
+  - snap
+  - gradle
+  - mvn
+  - pip
+
+runtime:
+  - golang
+  - java-8
+  - java-11
+  - nodejs

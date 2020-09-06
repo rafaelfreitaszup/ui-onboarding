@@ -1,0 +1,24 @@
+browser:
+  - Chrome
+  - Firefox
+
+ides:
+  - VSCode
+  - Atom
+
+cli:
+  - git
+  - github-cli
+  - docker
+  - aws
+  - gcp
+  - kubectl
+  - terraform
+  - azure
+
+tools:
+  - postman
+
+dependecy-manager:
+  - pip
+  - mvn

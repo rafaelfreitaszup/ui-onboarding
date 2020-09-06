@@ -1,11 +1,18 @@
 package main
 
 import (
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
 	"time"
 
 	"github.com/sciter-sdk/go-sciter"
 	"github.com/sciter-sdk/go-sciter/window"
+	"gopkg.in/yaml.v2"
 )
+
+type Setup map[string][]string
 
 func main() {
 	windowRect := sciter.NewRect(250, 500, 635, 625)
@@ -13,19 +20,24 @@ func main() {
 	presentation, windowsGenerateionError := window.New(sciter.SW_TITLEBAR|sciter.SW_TOOL|sciter.SW_CONTROLS, windowRect)
 
 	if windowsGenerateionError != nil {
-		print("Failed to generate sciter window ", windowsGenerateionError.Error())
+		log.Println("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
 	uiLoadingError := presentation.LoadFile("./ui/presentation/index.html")
 
 	if uiLoadingError != nil {
-		print("Failed to load ui file ", uiLoadingError.Error())
+		log.Println("Failed to load ui file ", uiLoadingError.Error())
 	}
 
 	showSplashScreen(presentation)
 
-	presentation.DefineFunction("load_tool_selection", func(...*sciter.Value) *sciter.Value {
-		showToolSelection(presentation)
+	presentation.DefineFunction("load_tool_selection", func(args ...*sciter.Value) *sciter.Value {
+		if args[0].IsString() == true {
+			parsedFile := getConfigs(args[0])
+
+			showToolSelection(presentation, parsedFile)
+		}
+
 		return nil
 	})
 
@@ -38,13 +50,13 @@ func showSplashScreen(mainScreen *window.Window) {
 	splashScreen, windowsGenerateionError := window.New(sciter.SW_TOOL, rect)
 
 	if windowsGenerateionError != nil {
-		print("Failed to generate sciter window ", windowsGenerateionError.Error())
+		log.Println("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
 	uiLoadingError := splashScreen.LoadFile("./ui/splash-screen/index.html")
 
 	if uiLoadingError != nil {
-		print("Failed to load ui file ", uiLoadingError.Error())
+		log.Println("Failed to load ui file ", uiLoadingError.Error())
 	}
 
 	splashScreen.DefineFunction("load_main_screen", func(...*sciter.Value) *sciter.Value {
@@ -60,20 +72,41 @@ func showSplashScreen(mainScreen *window.Window) {
 	}()
 }
 
-func showToolSelection(mainScreen *window.Window) {
+func showToolSelection(mainScreen *window.Window, data map[string][]string) {
 	rect := sciter.NewRect(250, 500, 635, 625)
 
 	toolSelection, windowsGenerateionError := window.New(sciter.SW_TITLEBAR|sciter.SW_TOOL|sciter.SW_CONTROLS, rect)
 
 	if windowsGenerateionError != nil {
-		print("Failed to generate sciter window ", windowsGenerateionError.Error())
+		log.Println("Failed to generate sciter window ", windowsGenerateionError.Error())
 	}
 
 	uiLoadingError := toolSelection.LoadFile("./ui/tool-selection/index.html")
 
 	if uiLoadingError != nil {
-		print("Failed to load ui file ", uiLoadingError.Error())
+		log.Println("Failed to load ui file ", uiLoadingError.Error())
 	}
 
 	toolSelection.Show()
+}
+
+func getConfigs(name *sciter.Value) Setup {
+	yamlFile, err := os.Open(fmt.Sprintf("./config/%s.yml", name))
+
+	if err != nil {
+		log.Println(err)
+	}
+
+	defer yamlFile.Close()
+
+	parsedFile := Setup{}
+
+	byteValue, _ := ioutil.ReadAll(yamlFile)
+	err = yaml.Unmarshal(byteValue, &parsedFile)
+
+	if err != nil {
+		log.Println(err)
+	}
+
+	return parsedFile
 }

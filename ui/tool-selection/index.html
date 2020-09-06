@@ -5,131 +5,6 @@
     <link rel="stylesheet" href="./ui/tool-selection/index.css">
 </head>
 
-<script type="text/tiscript">
-    $(#tools).onControlEvent = function(evt) {
-        if (evt.type == (Event.SELECT_STATE_CHANGED)) {            
-            if (evt.source.checked != true) {
-                if (evt.source.id == "") {
-                    removeElements(evt);
-                }
-
-                removeElement(evt.source.id);
-                return;
-            }
-            
-            if (evt.source.id == ""){
-                appendElements(evt);
-                return;       
-            }
-                
-            appendElement(evt.source.text);
-        }
-    }
-
-    $(#selected).onControlEvent = function(evt) {
-        if (evt.type == (Event.BUTTON_CLICK)) {
-            var element = $(#{evt.source.text});
-
-            element.state.checked = false;
-            
-            if (checkParent(evt) == false) {
-                element.parent.state.checked = false;
-            }
-
-            evt.source.remove(); 
-        }
-    }
-
-    function appendElement(text) {
-        const element = <button|checkbox class="btn-tools" id={text} checked>{text}</button>;                        
-
-        $(#selected).append(element);        
-    }
-
-    function appendElements(evt) {
-        for (var item in evt.source) {
-            if (item.id != "") {
-                appendElement(item.id);
-            }                 
-        }
-    }
-
-    function removeElement(id) {
-        if (id != "") {
-            $(button#{id}).remove();
-        }
-    }
-
-    function removeElements(evt) {
-        for (var item in evt.source) {
-            removeElement(item.id);
-        }
-    }
-
-    function checkParent(evt) {
-        var checked = false;
-
-        for (var item in $(#{evt.source.text}).parent) {
-            if (item.id == "") {
-                continue;
-            }
-
-            if (item.state.checked == true) {
-                checked = true;
-            }
-        }
-
-        return checked;
-    }
-
-    self.on("~submit", "form", function(evt) {
-        var text = evt.data.search;
-
-        if (text == "") {
-            activeAll();
-            return true;
-        }
-
-        activeAll();
-
-        activatesSelectedItems(text);
-
-        return true;
-    });
-
-    function activeAll() {
-        for (var items in $(#tools)) {
-            for (var item in items) {
-                var element = $(#{item.text});
-
-                if (element == undefined) {
-                    continue;
-                }
-                                
-                if (element.attributes.hasClass("not-display")) {
-                    element.attributes.removeClass("not-display");
-                    element.attributes.addClass("active-display");
-                }               
-            }
-        }
-    }
-
-    function activatesSelectedItems(text) {
-        for (var items in $(#tools)) {
-            for (var item in items) {
-                if (item.id == "") {
-                    continue;
-                }
-                
-                if(item.text.toUpperCase().indexOf(text.toUpperCase()) < 0) {
-                    item.attributes.removeClass("active-display");
-                    item.attributes.addClass("not-display");
-                }
-            }
-        }
-    }
-</script>
-
 <body>
     <header>
         <div class="banner-displayed">
@@ -142,13 +17,13 @@
                 <h1 class="title">Ferramentas</h1>
                 <div class="search">
                     <form #search>
-                        <input #text type="text" novalue="Search..." name="search">
+                        <input|text #text novalue="Search..." name="search">
                         <button|submit class="button-search icons8-search"></button>
                     </form>
                 </div>
                 <div class="function">
                     <select name="select">
-                        <option selected="selected" class="select-custom-default" value="backend">backend</option>
+                        <option selected class="select-custom-default" value="backend">backend</option>
                         <option class="select-custom-default" value="dev-ios">dev-ios</option>
                         <option class="select-custom-default" value="dev-java">dev-java</option>
                         <option class="select-custom-default" value="dev-qa">dev-qa</option>
@@ -201,6 +76,130 @@
     <script type="text/tiscript">
         event click $(#cancel) {
             view.close()
+        }
+
+        $(#tools).onControlEvent = function(evt) {
+            if (evt.type == (Event.SELECT_STATE_CHANGED)) {            
+                if (evt.source.checked != true) {
+                    if (evt.source.id == "") {
+                        removeElements(evt);
+                        return;
+                    }
+    
+                    removeElement(evt.source.id);
+                    return;
+                }
+                
+                if (evt.source.id == ""){
+                    appendElements(evt);
+                    return;       
+                }
+                    
+                appendElement(evt.source.text);
+            }
+        }
+    
+        $(#selected).onControlEvent = function(evt) {
+            if (evt.type == (Event.BUTTON_CLICK)) {
+                var element = $(#{evt.source.text});
+    
+                element.state.checked = false;
+                
+                if (checkParent(evt) == false) {
+                    element.parent.state.checked = false;
+                }
+    
+                evt.source.remove(); 
+            }
+        }
+    
+        function appendElement(text) {
+            const element = <button|checkbox class="btn-tools" id={text} checked>{text}</button>;                        
+    
+            $(#selected).append(element);        
+        }
+    
+        function appendElements(evt) {
+            for (var item in evt.source) {
+                if (item.id != "") {
+                    appendElement(item.id);
+                }                 
+            }
+        }
+    
+        function removeElement(id) {
+            if (id != "") {
+                $(button#{id}).remove();
+            }
+        }
+    
+        function removeElements(evt) {
+            for (var item in evt.source) {
+                removeElement(item.id);
+            }
+        }
+    
+        function checkParent(evt) {
+            var checked = false;
+    
+            for (var item in $(#{evt.source.text}).parent) {
+                if (item.id == "") {
+                    continue;
+                }
+    
+                if (item.state.checked == true) {
+                    checked = true;
+                }
+            }
+    
+            return checked;
+        }
+    
+        self.on("~submit", "form", function(evt) {
+            var text = evt.data.search;
+    
+            if (text == "") {
+                activeAll();
+                return true;
+            }
+    
+            activeAll();
+    
+            activatesSelectedItems(text);
+    
+            return true;
+        });
+    
+        function activeAll() {
+            for (var items in $(#tools)) {
+                for (var item in items) {
+                    var element = $(#{item.text});
+    
+                    if (element == undefined) {
+                        continue;
+                    }
+                                    
+                    if (element.attributes.hasClass("not-display")) {
+                        element.attributes.removeClass("not-display");
+                        element.attributes.addClass("active-display");
+                    }               
+                }
+            }
+        }
+    
+        function activatesSelectedItems(text) {
+            for (var items in $(#tools)) {
+                for (var item in items) {
+                    if (item.id == "") {
+                        continue;
+                    }
+                    
+                    if(item.text.toUpperCase().indexOf(text.toUpperCase()) < 0) {
+                        item.attributes.removeClass("active-display");
+                        item.attributes.addClass("not-display");
+                    }
+                }
+            }
         }
     </script>
 </body>

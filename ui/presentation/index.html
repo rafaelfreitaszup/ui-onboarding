@@ -39,7 +39,7 @@
     <script type="text/tiscript">
         event click $(#continue){
             view.close()
-            view.load_tool_selection()
+            view.load_tool_selection($(select).value)
         }
 
         event click $(#cancel){

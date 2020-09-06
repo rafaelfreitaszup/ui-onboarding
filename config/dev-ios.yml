@@ -1,0 +1,26 @@
+browser:
+  - Chrome
+  - Firefox
+
+ides:
+  - VSCode
+  - Atom
+
+cli:
+  - git
+  - github-cli
+  - docker
+
+tools:
+  - postman
+
+dependecy-manager:
+  - cocoapods
+  - gradle
+  - mvn
+  - pip
+
+runtime:
+  - java-8
+  - java-11
+  - nodejs
