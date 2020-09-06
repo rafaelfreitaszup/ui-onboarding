@@ -5,6 +5,82 @@
     <link rel="stylesheet" href="./ui/tool-selection/index.css">
 </head>
 
+<script type="text/tiscript">
+    $(#tools).onControlEvent = function(evt) {
+        if (evt.type == (Event.SELECT_STATE_CHANGED)) {            
+            if (evt.source.checked != true) {
+                if (evt.source.id == "") {
+                    removeElements(evt);
+                }
+
+                removeElement(evt.source.id);
+                return;
+            }
+            
+            if (evt.source.id == ""){
+                appendElements(evt);
+                return;       
+            }
+                
+            appendElement(evt.source.text);
+        }
+    }
+
+    $(#selected).onControlEvent = function(evt) {
+        if (evt.type == (Event.BUTTON_CLICK)) {
+            $(#{evt.source.text}).state.checked = false;
+            
+            if (checkParent(evt) == false) {
+                $(#{evt.source.text}).parent.state.checked = false;
+            }
+
+            evt.source.remove(); 
+        }
+    }
+
+    function appendElement(text) {
+        const element = <button|checkbox class="btn-tools" id={text} checked>{text}</button>;                        
+
+        $(#selected).append(element);        
+    }
+
+    function appendElements(evt) {
+        for (var item in evt.source) {
+            if (item.id != "") {
+                appendElement(item.id);
+            }                 
+        }
+    }
+
+    function removeElement(id) {
+        if (id != "") {
+            $(button#{id}).remove();
+        }
+    }
+
+    function removeElements(evt) {
+        for (var item in evt.source) {
+            removeElement(item.id);
+        }
+    }
+
+    function checkParent(evt) {
+        var checked = false;
+
+        for (var item in $(#{evt.source.text}).parent) {
+            if (item.id == "") {
+                continue;
+            }
+
+            if (item.state.checked == true) {
+                checked = true;
+            }
+        }
+
+        return checked;
+    }
+</script>
+
 <body>
     <header>
         <div class="banner-displayed">
@@ -31,20 +107,20 @@
                     </select>
                 </div>
                 <div class="selection-tools">
-                    <select|tree multiple=checkmarks>
+                    <select|tree #tools multiple=checkmarks>
                         <option>
                             <caption>Browser</caption>
-                        <option value="1">Chome</option>
-                        <option value="2">Firefox</option>
+                        <option #Chome value="Chome">Chome</option>
+                        <option #Firefox value="Firefox">Firefox</option>
                         </option>
                         <option>
                             <caption>Ides</caption>
-                        <option value="5">Android-Studio</option>
-                        <option value="6">Intellij</option>
-                        <option value="7">VSCode</option>
-                        <option value="8">Golang</option>
-                        <option value="8">WebStorm</option>
-                        <option value="8">Atom</option>
+                        <option #Android-Studio value="Android-Studio">Android-Studio</option>
+                        <option #Intellij value="Intellij">Intellij</option>
+                        <option #VSCode value="VSCode">VSCode</option>
+                        <option #Golang value="Golang">Golang</option>
+                        <option #WebStorm value="WebStorm">WebStorm</option>
+                        <option #Atom value="Atom">Atom</option>
                         </option>
                         <option expanded>
                             <caption>CLI</caption>
@@ -58,17 +134,26 @@
                         </select>
                 </div>
             </div>
-            <div class="selected-tools">
+            <div class="container-selected-tools">
                 <h1 class="title">Ferramentas Selecionadas</h1>
+                <div class="selected-tools">
+                    <select|list #selected></select>
+                </div>
             </div>
         </div>
     </main>
     <footer>
         <div class="buttons">
-            <button href="#" class="button cancel">Cancelar</button>
-            <button #continue href="#" class="button continue">Continuar</button>
+            <button #cancel class="button cancel">Cancelar</button>
+            <button #continue class="button continue">Continuar</button>
         </div>
     </footer>
+
+    <script type="text/tiscript">
+        event click $(#cancel){
+            view.close()
+        }
+    </script>
 </body>
 
 </html>

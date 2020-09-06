@@ -29,14 +29,6 @@ func main() {
 		return nil
 	})
 
-	rootEl, _ := presentation.GetRootElement()
-
-	buttonEl, _ := rootEl.SelectById("continue")
-
-	buttonEl.OnClick(func() {
-		presentation.Call("close", sciter.NewValue("ok"))
-	})
-
 	presentation.Run()
 }
 
@@ -82,11 +74,6 @@ func showToolSelection(mainScreen *window.Window) {
 	if uiLoadingError != nil {
 		print("Failed to load ui file ", uiLoadingError.Error())
 	}
-
-	// toolSelection.DefineFunction("load_main_screen", func(...*sciter.Value) *sciter.Value {
-	// 	mainScreen.Show()
-	// 	return nil
-	// })
 
 	toolSelection.Show()
 }

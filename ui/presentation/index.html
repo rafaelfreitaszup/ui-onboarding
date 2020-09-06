@@ -32,14 +32,18 @@
     </main>
     <footer>
         <div class="buttons">
-            <button href="#" class="button cancel">Cancelar</button>
-            <button #continue href="#" class="button continue">Continuar</button>
+            <button #cancel class="button cancel">Cancelar</button>
+            <button #continue class="button continue">Continuar</button>
         </div>
     </footer>
     <script type="text/tiscript">
-        function close(){    
+        event click $(#continue){
             view.close()
             view.load_tool_selection()
+        }
+
+        event click $(#cancel){
+            view.close()
         }
     </script>
 </body>
