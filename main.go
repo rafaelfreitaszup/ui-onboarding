@@ -33,9 +33,9 @@ func main() {
 
 	presentation.DefineFunction("load_tool_selection", func(args ...*sciter.Value) *sciter.Value {
 		if args[0].IsString() == true {
-			parsedFile := getConfigs(args[0])
+			key := args[0]
 
-			showToolSelection(presentation, parsedFile)
+			showToolSelection(presentation, key)
 		}
 
 		return nil
@@ -72,7 +72,7 @@ func showSplashScreen(mainScreen *window.Window) {
 	}()
 }
 
-func showToolSelection(mainScreen *window.Window, data map[string][]string) {
+func showToolSelection(mainScreen *window.Window, key *sciter.Value) {
 	rect := sciter.NewRect(250, 500, 635, 625)
 
 	toolSelection, windowsGenerateionError := window.New(sciter.SW_TITLEBAR|sciter.SW_TOOL|sciter.SW_CONTROLS, rect)
@@ -87,11 +87,16 @@ func showToolSelection(mainScreen *window.Window, data map[string][]string) {
 		log.Println("Failed to load ui file ", uiLoadingError.Error())
 	}
 
+	// todo adicionar select tools dinâmico
+	// parsedFile := getConfigs(key)
+
+	toolSelection.Call("selectElement", sciter.NewValue(key))
+
 	toolSelection.Show()
 }
 
-func getConfigs(name *sciter.Value) Setup {
-	yamlFile, err := os.Open(fmt.Sprintf("./config/%s.yml", name))
+func getConfigs(key *sciter.Value) Setup {
+	yamlFile, err := os.Open(fmt.Sprintf("./config/%s.yml", key))
 
 	if err != nil {
 		log.Println(err)
@@ -102,6 +107,7 @@ func getConfigs(name *sciter.Value) Setup {
 	parsedFile := Setup{}
 
 	byteValue, _ := ioutil.ReadAll(yamlFile)
+
 	err = yaml.Unmarshal(byteValue, &parsedFile)
 
 	if err != nil {

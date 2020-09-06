@@ -22,8 +22,8 @@
                     </form>
                 </div>
                 <div class="function">
-                    <select name="select">
-                        <option selected class="select-custom-default" value="backend">backend</option>
+                    <select #activity name="select">
+                        <option class="select-custom-default" value="backend">backend</option>
                         <option class="select-custom-default" value="dev-ios">dev-ios</option>
                         <option class="select-custom-default" value="dev-java">dev-java</option>
                         <option class="select-custom-default" value="dev-qa">dev-qa</option>
@@ -197,6 +197,17 @@
                     if(item.text.toUpperCase().indexOf(text.toUpperCase()) < 0) {
                         item.attributes.removeClass("active-display");
                         item.attributes.addClass("not-display");
+                    }
+                }
+            }
+        }
+
+        function selectElement(name) {            
+            for (var items in  $(#activity)) {
+                for (var item in items) {                    
+                    if ( name like item.text.trim()) {          
+                        item.execCommand("set-current");
+                        break;
                     }
                 }
             }
