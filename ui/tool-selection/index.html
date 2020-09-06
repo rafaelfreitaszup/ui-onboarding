@@ -28,10 +28,12 @@
 
     $(#selected).onControlEvent = function(evt) {
         if (evt.type == (Event.BUTTON_CLICK)) {
-            $(#{evt.source.text}).state.checked = false;
+            var element = $(#{evt.source.text});
+
+            element.state.checked = false;
             
             if (checkParent(evt) == false) {
-                $(#{evt.source.text}).parent.state.checked = false;
+                element.parent.state.checked = false;
             }
 
             evt.source.remove(); 
@@ -79,6 +81,53 @@
 
         return checked;
     }
+
+    self.on("~submit", "form", function(evt) {
+        var text = evt.data.search;
+
+        if (text == "") {
+            activeAll();
+            return true;
+        }
+
+        activeAll();
+
+        activatesSelectedItems(text);
+
+        return true;
+    });
+
+    function activeAll() {
+        for (var items in $(#tools)) {
+            for (var item in items) {
+                var element = $(#{item.text});
+
+                if (element == undefined) {
+                    continue;
+                }
+                                
+                if (element.attributes.hasClass("not-display")) {
+                    element.attributes.removeClass("not-display");
+                    element.attributes.addClass("active-display");
+                }               
+            }
+        }
+    }
+
+    function activatesSelectedItems(text) {
+        for (var items in $(#tools)) {
+            for (var item in items) {
+                if (item.id == "") {
+                    continue;
+                }
+                
+                if(item.text.toUpperCase().indexOf(text.toUpperCase()) < 0) {
+                    item.attributes.removeClass("active-display");
+                    item.attributes.addClass("not-display");
+                }
+            }
+        }
+    }
 </script>
 
 <body>
@@ -89,12 +138,12 @@
     </header>
     <main>
         <div>
-            <div class="tools">
+            <div class="container-tools">
                 <h1 class="title">Ferramentas</h1>
                 <div class="search">
-                    <form>
-                        <input type="text" novalue="Search..." name="search">
-                        <button type="submit" class="button-search icons8-search"></button>
+                    <form #search>
+                        <input #text type="text" novalue="Search..." name="search">
+                        <button|submit class="button-search icons8-search"></button>
                     </form>
                 </div>
                 <div class="function">
@@ -150,7 +199,7 @@
     </footer>
 
     <script type="text/tiscript">
-        event click $(#cancel){
+        event click $(#cancel) {
             view.close()
         }
     </script>

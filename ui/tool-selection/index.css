@@ -24,7 +24,7 @@ html {
     margin-right: auto;
 }
 
-.tools {
+.container-tools {
     width: 278px;
     height: 421px;
     border-radius: 5px;
@@ -88,10 +88,12 @@ form input[type=text] {
     background-color: transparent;
 }
 
-form::after {
-    content: "";
-    clear: both;
-    display: table;
+.not-display {
+    display: none;    
+}
+
+.active-display {
+    display: block;
 }
 
 .function {
@@ -141,24 +143,24 @@ form::after {
     margin-top: 18px;
 }
 
-.tools .selection-tools select {
+.container-tools .selection-tools select {
     width: 267px;
     height: 300px;
     background: none;
 }
 
-.tools .selection-tools select caption {
+.container-tools .selection-tools select caption {
     padding-left: 18px;
     fill: #F1F2F2;
     color: #F1F2F2;
     background: none;
 }
 
-.tools .selection-tools select option:hover {
+.container-tools .selection-tools select option:hover {
     stroke: #0af;
 }
 
-.tools .selection-tools select option {
+.container-tools .selection-tools select option {
     margin-left: 20px;
     padding-left: 20px;
     foreground-size: 10px 10px;
@@ -167,14 +169,14 @@ form::after {
     background: none;
 }
 
-.tools .selection-tools select caption:checked {
+.container-tools .selection-tools select caption:checked {
     background-image: url(stock:checkmark-hollow);
     fill: #8DC63F;
     color: #8DC63F;
     background: none;
 }
 
-.tools .selection-tools select option:checked {
+.container-tools .selection-tools select option:checked {
     background-image: url(stock:checkmark-hollow);
     fill: #8DC63F;
     color: #8DC63F;
