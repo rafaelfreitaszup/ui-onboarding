@@ -15,7 +15,7 @@ html {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 14px;
     color: #F1F2F2;
 }
@@ -26,14 +26,26 @@ html {
     margin-left: 24px;
 }
 
-.box-load {
+.progress {
     width: 492px;
     height: 9px;
     margin-top: 8px;
     float: left;
     background: #F1F2F2;
     border: 1px solid #083352;
+    border-radius: 4px;
     box-sizing: border-box;
+}
+
+.progress-bar {
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    margin-top: 10px;
+    margin-left: 1px;
+    background: #8DC63F;
+    border-radius: 4px;
+    transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
 .text-load {
@@ -76,6 +88,36 @@ html {
     margin-left: 25px;
 }
 
+.details-button {
+    width: 65px;
+    height: 14px;
+    background: none;
+}
+
+.icon-details-right {
+    width: 12px;
+    height: 14px;
+    margin-top: 3px;
+    foreground-size: 6dip 6dip;
+    foreground-image: url(stock:chevron-right);
+    foreground-repeat: no-repeat;
+    float: left;
+    fill: #F1F2F2;
+    background: none;
+}
+
+.icon-details-down {
+    width: 12px;
+    height: 14px;
+    margin-top: 5px;
+    foreground-size: 8dip 8dip;
+    foreground-image: url(stock:chevron-down);
+    foreground-repeat: no-repeat;
+    float: left;
+    fill: #F1F2F2;
+    background: none;
+}
+
 .title-details {
     font-family: Roboto;
     font-style: normal;
@@ -83,6 +125,8 @@ html {
     font-size: 12px;
     line-height: 14px;
     color: #F1F2F2;
+    vertical-align: middle;
+    float: right;
 }
 
 .selector-detail {}
@@ -92,4 +136,12 @@ html {
     width: 585px;
     height: 428px;
     background: #323032;
+}
+
+.not-display {
+    display: none;
+}
+
+.active-display {
+    display: block;
 }

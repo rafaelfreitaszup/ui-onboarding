@@ -82,6 +82,6 @@
 
 <div align="center">
 
-![UI Onboarding](./img/record-v5.gif)
+![UI Onboarding](./img/record-v6.gif)
 
 </div>

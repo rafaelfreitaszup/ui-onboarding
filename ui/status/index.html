@@ -11,21 +11,44 @@
     </header>
     <main>
         <div class="main">
-            <div class="box-load"> </div>
+            <div class="progress-bar"></div>
+            <div class="progress"> </div>
             <button #cancel class="button cancel">Cancelar</button>
             <h2 class="text-load">Baixando jdk-12</h2>
         </div>
     </main>
     <footer>
         <div class="details">
-            <h3 class="title-details">Detalhes</h3>
-            <div class="detail"></div>
+            <div #select-details class="details-button">
+                <button #icon-details class="icon-details-right"></button>
+                <h2 class="title-details">Detalhes</h2> 
+            </div>
+            <div #detail class="detail not-display"></div>
         </div>
     </footer>
 
     <script type="text/tiscript">
-        event click $(#cancel){
+        event click $(#cancel) {
             view.close()
+        }
+
+        event click $(#select-details) {
+            var element = $(#detail);
+            var elementIcon = $(#icon-details);
+            
+            if (element.attributes.hasClass("not-display")) {
+                elementIcon.attributes.removeClass("icon-details-right");
+                elementIcon.attributes.addClass("icon-details-down");
+
+                element.attributes.removeClass("not-display");
+                element.attributes.addClass("active-display");
+            }  else {
+                elementIcon.attributes.removeClass("icon-details-down");
+                elementIcon.attributes.addClass("icon-details-right");
+
+                element.attributes.removeClass("active-display");
+                element.attributes.addClass("not-display");
+            }            
         }
     </script>
 </body>
