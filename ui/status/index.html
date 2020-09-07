@@ -28,12 +28,19 @@
     </footer>
 
     <script type="text/tiscript">
+        event click $(#cancel) {
+            view.close();
+        }
+
         function load(data) {
+            if (data.length == 0) {
+                view.close();
+            }
+
             var indexData = 0;
             var width = 0;
             var step = 492.0 / ( data.length * 1.0);
-            stdout.println(data);
-
+            
             self.timer(200ms, function() {
                 $(#progress-bar).style["width"] = width;
                 width = width + step;
@@ -45,15 +52,14 @@
                             
                 if (indexData >= data.length) {
                     $(#progress-bar).style["width"] = width;
+                    
+                    view.load_finish_screen();
+                    
                     return false;
                 }
 
                 return true;
             });        
-        }
-
-        event click $(#cancel) {
-            view.close()
         }
 
         event click $(#select-details) {

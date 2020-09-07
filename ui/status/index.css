@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-html {
+body {
     background-color: #0C3455;
 }
 
@@ -128,8 +128,6 @@ html {
     vertical-align: middle;
     float: right;
 }
-
-.selector-detail {}
 
 .detail {
     margin-top: 13px;

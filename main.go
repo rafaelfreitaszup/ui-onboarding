@@ -124,9 +124,40 @@ func showStatus(args *sciter.Value) {
 		log.Println("Failed to load ui file ./ui/status/index.html ", uiLoadingError.Error())
 	}
 
+	status.DefineFunction("load_finish_screen", func(args ...*sciter.Value) *sciter.Value {
+		time.Sleep(2 * time.Second)
+
+		showFinishScreen()
+
+		return nil
+	})
+
 	status.Call("load", sciter.NewValue(args))
 
 	status.Show()
+}
+
+func showFinishScreen() {
+	rect := sciter.NewRect(250, 500, 635, 662)
+
+	finishScreen, windowsGenerateionError := window.New(sciter.SW_TOOL, rect)
+
+	if windowsGenerateionError != nil {
+		log.Println("Failed to generate sciter window SplashScreen", windowsGenerateionError.Error())
+	}
+
+	uiLoadingError := finishScreen.LoadFile("./ui/finish-screen/index.html")
+
+	if uiLoadingError != nil {
+		log.Println("Failed to load ui file ./ui/finish-screen/index.html ", uiLoadingError.Error())
+	}
+
+	finishScreen.Show()
+
+	go func() {
+		time.Sleep(2 * time.Second)
+		finishScreen.Call("close_finish_screen", sciter.NewValue("ok"))
+	}()
 }
 
 func parseJSON(key *sciter.Value) []byte {

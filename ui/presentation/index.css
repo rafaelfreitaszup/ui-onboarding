@@ -75,11 +75,6 @@ select:hover>button {
     margin-left: 457px;
 }
 
-button {
-    font: inherit;
-    cursor: pointer;
-}
-
 .button {
     width: 68px;
     height: 20px;
@@ -88,6 +83,8 @@ button {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     transition: box-shadow 0.4s ease, transform 0.4s ease;
     color: #F1F2F2;
+    font: inherit;
+    cursor: pointer;
 }
 
 .cancel {

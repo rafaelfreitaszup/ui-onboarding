@@ -17,8 +17,8 @@ html {
 }
 
 .animation {
-    width: 635px;
-    height: 640px;
+    width: 500px;
+    height: 500px;
     margin: auto;
     background-image: url(img/animation.gif);
     background-repeat: no-repeat;
