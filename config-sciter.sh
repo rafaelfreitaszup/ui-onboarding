@@ -2,6 +2,7 @@
 
 SYSTEM=$(uname -s)
 
+cd ~
 wget https://sciter.com/sdk/sciter-sdk.zip
 
 unzip sciter-sdk.zip

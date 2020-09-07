@@ -53,12 +53,18 @@
 
     <script type="text/tiscript">
         event click $(#cancel) {
-            view.close()
+            view.close();
         }
 
-        event click $(#continue){
-            view.close()
-            view.load_status()
+        event click $(#continue) {
+            var tools = [];
+
+            for (var item in $(#selected)) {
+                tools.push(item.text);
+            }
+
+            view.close();
+            view.load_status(tools);
         }
 
         $(#activity).onValueChanged = function() {

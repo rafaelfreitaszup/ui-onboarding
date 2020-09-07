@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"time"
 
 	"github.com/sciter-sdk/go-sciter"
@@ -97,8 +98,10 @@ func showToolSelection(key *sciter.Value) {
 		return nil
 	})
 
-	toolSelection.DefineFunction("load_status", func(...*sciter.Value) *sciter.Value {
-		showStatus()
+	toolSelection.DefineFunction("load_status", func(args ...*sciter.Value) *sciter.Value {
+		if args[0].IsObjectArray() == true {
+			showStatus(args[0])
+		}
 
 		return nil
 	})
@@ -106,7 +109,7 @@ func showToolSelection(key *sciter.Value) {
 	toolSelection.Show()
 }
 
-func showStatus() {
+func showStatus(args *sciter.Value) {
 	rect := sciter.NewRect(250, 500, 635, 625)
 
 	status, windowsGenerateionError := window.New(sciter.SW_TITLEBAR|sciter.SW_TOOL|sciter.SW_CONTROLS, rect)
@@ -120,6 +123,8 @@ func showStatus() {
 	if uiLoadingError != nil {
 		log.Println("Failed to load ui file ./ui/status/index.html ", uiLoadingError.Error())
 	}
+
+	status.Call("load", sciter.NewValue(args))
 
 	status.Show()
 }
@@ -152,4 +157,14 @@ func getConfigs(key *sciter.Value) Setup {
 	}
 
 	return parsedFile
+}
+
+func getOutput() {
+	out, err := exec.Command("date").Output()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("The date is %s\n", out)
 }

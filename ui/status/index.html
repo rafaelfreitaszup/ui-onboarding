@@ -11,23 +11,47 @@
     </header>
     <main>
         <div class="main">
-            <div class="progress-bar"></div>
+            <div #progress-bar class="progress-bar"></div>
             <div class="progress"> </div>
             <button #cancel class="button cancel">Cancelar</button>
-            <h2 class="text-load">Baixando jdk-12</h2>
+            <h2 #text-load class="text-load"></h2>
         </div>
     </main>
     <footer>
         <div class="details">
             <div #select-details class="details-button">
                 <button #icon-details class="icon-details-right"></button>
-                <h2 class="title-details">Detalhes</h2> 
+                <h2 class="title-details">Detalhes</h2>
             </div>
             <div #detail class="detail not-display"></div>
         </div>
     </footer>
 
     <script type="text/tiscript">
+        function load(data) {
+            var indexData = 0;
+            var width = 0;
+            var step = 492.0 / ( data.length * 1.0);
+            stdout.println(data);
+
+            self.timer(200ms, function() {
+                $(#progress-bar).style["width"] = width;
+                width = width + step;
+
+                if (data[indexData] != "void") {
+                    $(#text-load).text = "Baixando " + data[indexData];
+                    indexData++;
+                }        
+                            
+                if (indexData >= data.length) {
+                    $(#progress-bar).style["width"] = width;
+                    return false;
+                }
+
+                return true;
+            });        
+        }
+
         event click $(#cancel) {
             view.close()
         }

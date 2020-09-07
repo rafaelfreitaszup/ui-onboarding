@@ -27,7 +27,7 @@ html {
 }
 
 .progress {
-    width: 492px;
+    width: 492dip;
     height: 9px;
     margin-top: 8px;
     float: left;
@@ -39,7 +39,7 @@ html {
 
 .progress-bar {
     position: absolute;
-    width: 100px;
+    width: 1;
     height: 5px;
     margin-top: 10px;
     margin-left: 1px;
