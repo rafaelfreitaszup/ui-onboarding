@@ -56,6 +56,11 @@
             view.close()
         }
 
+        event click $(#continue){
+            view.close()
+            view.load_status()
+        }
+
         $(#activity).onValueChanged = function() {
             const value = $(#activity).value;
             
