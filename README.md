@@ -30,7 +30,8 @@
 + Não usamos JavaScript, mas TIScript é uma versão estendida do ECMAScript. O que não é necessariamente uma coisa ruim, mas no início produz um certo desconforto, veja mais [aqui](https://sciter.com/developers/for-web-programmers/tiscript-vs-javascript/)
 
 ## Como testar local
-
++ Caso o SO seja Linux ou MacOS basta executar `config-sciter.sh`
+  
 + Configurar o Sciter de acordo com o SO
   + No momento, apenas Go 1.10 ou superior é compatível.
   + Baixe o [sciter-sdk](https://sciter.com/download/).
