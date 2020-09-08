@@ -20,10 +20,10 @@
     <footer>
         <div class="details">
             <div #select-details class="details-button">
-                <button #icon-details class="icon-details-right"></button>
+                <button #icon-details class="icon-details-down"></button>
                 <h2 class="title-details">Detalhes</h2>
             </div>
-            <div #detail class="detail not-display"></div>
+            <div #detail class="detail active-display"></div>
         </div>
     </footer>
 
@@ -52,7 +52,9 @@
                             
                 if (indexData >= data.length) {
                     $(#progress-bar).style["width"] = width;
-                    
+                    $(.title).text = "Instalação finalizada!";
+                    $(#text-load).text = "";
+
                     view.load_finish_screen();
                     
                     return false;
